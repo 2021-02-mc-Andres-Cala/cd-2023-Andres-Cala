@@ -1,0 +1,23 @@
+import numpy as np
+
+n = 1000
+numExperimentos = 100000
+mediaPi = 0
+listaValoresPi = []
+for i in range(numExperimentos):
+    valor = 0
+    X = np.random.uniform(0, 1, n).tolist()
+    Y = np.random.uniform(0, 1, n).tolist()
+    for j in range(n):
+        Z = np.sqrt(X[j] * X[j] + Y[j] * Y[j])
+        #Comprobar que esté en el circulo
+        if Z <= 1:
+            valor += 1
+    valorFlotante = float(valor)
+    valorPi = valorFlotante * 4 / n
+    listaValoresPi.append(valorPi)
+    mediaPi += valorPi
+
+    
+piFinal = mediaPi / numExperimentos
+print(mediaPi )
